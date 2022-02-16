@@ -6,7 +6,6 @@ int main(int A, int *B, int *args) {
   {
   printf("hello june!\n");
   }
-  if(1) 
-  { printf("hello july!\n"); }
+  if(1) { printf("hello july!\n"); }
   return 0;
 }
