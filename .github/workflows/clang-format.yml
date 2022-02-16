@@ -1,23 +1,14 @@
-# Run clang-format
-name: Clang-format
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
+name: clang-format Check
+on: [push, pull_request]
 jobs:
-  checkout-and-check-formatting:
+  formatting-check:
+    name: Formatting Check
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
-    - name: Run clang-format
-      uses: HorstBaerbel/action-clang-format@1.5
-      # These are optional (defaults displayed)
+    - name: Run clang-format style check for C/C++/Protobuf programs.
+      uses: jidicula/clang-format-action@v4.5.0
       with:
-        scandir: '.'
-        excludedirs: 'build'
-        extensions: 'c,h,C,H,cpp,hpp,cc,hh,c++,h++,cxx,hxx'
-        style: 'file'
+        clang-format-version: '14'
+        check-path: 'src'
+        # fallback-style: 'Mozilla' # use .clang-format
